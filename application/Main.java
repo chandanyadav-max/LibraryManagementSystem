@@ -1,20 +1,23 @@
 package application;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.LoginView;
+import ui.LoginView;
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
+    @Override
+    public void start(Stage stage) {
+        LoginView login = new LoginView(stage);
+        Scene scene = new Scene(login.getView(),1200,700);
+
+        stage.setTitle("Library Management System");
+        stage.setScene(scene);
+        stage.show();
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Library Management System");
-        primaryStage.setMinWidth(1100);
-        primaryStage.setMinHeight(700);
-        new LoginView(primaryStage).show();
+    public static void main(String[] args) {
+        launch();
     }
 }
